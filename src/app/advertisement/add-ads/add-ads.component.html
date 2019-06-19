@@ -1,0 +1,58 @@
+<div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+      <h3 class="text-white pos-abs">Create a new Ads</h3>
+    </div>
+  </div>
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <!-- <div class="form-group">
+        <label>Title</label>
+        <input class="form-control" formControlName="Title" name="Title" [ngClass]="{ 'is-invalid': submitted && f.Title.errors }" placeholder="Title of the advertisement" />
+        <div *ngIf="submitted && f.Title.errors" class="invalid-feedback">
+          <div *ngIf="f.Title.errors.required">Title is required</div>
+        </div>
+      </div> -->
+        <div class="form-group">
+          <label>Contact</label>
+          <input class="form-control" type="number" formControlName="Contact" name="Contact" [ngClass]="{ 'is-invalid': submitted && f.Contact.errors }" placeholder="Enter the contact number" required/>
+          <div *ngIf="submitted && f.Contact.errors" class="invalid-feedback">
+            <div *ngIf="f.Contact.errors.required">Contact number is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Put your item image here</label>
+          <input class="form-control-file" formControlName="image_url" name="image_url" (change)="upload($event)" accept=".png,.jpg" [ngClass]="{ 'is-invalid': submitted && f.image_url.errors }" type="file" required/>
+          <progress max="100" [value]="(uploadProgress | async)"></progress>
+          <div [ngClass]="{'text-success': fileUploaded, 'text-info': !fileUploaded}">{{upldStatus}}</div>
+          <div *ngIf="submitted && f.image_url.errors" class="invalid-feedback">
+            <div *ngIf="f.image_url.errors.required">Item image is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Price</label>
+          <input class="form-control" formControlName="Price" name="Price" [ngClass]="{ 'is-invalid': submitted && f.Price.errors }" placeholder="Enter the Price" required/>
+          <div *ngIf="submitted && f.Price.errors" class="invalid-feedback">
+            <div *ngIf="f.Price.errors.required">Price is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <textarea style="min-height:250px;" formControlName="Description" [ngClass]="{ 'is-invalid': submitted && f.Description.errors }" class="form-control" name="Description" required></textarea>
+          <div *ngIf="submitted && f.Description.errors" class="invalid-feedback">
+            <div *ngIf="f.Description.errors.required">Description is required</div>
+          </div>
+        </div>
+         <div class="form-group">
+          <label>Location</label>
+          <input class="form-control" formControlName="Location" name="Location" [ngClass]="{ 'is-invalid': submitted && f.Location.errors }" placeholder="Enter the Location" required/>
+          <div *ngIf="submitted && f.Location.errors" class="invalid-feedback">
+            <div *ngIf="f.Location.errors.required">Location is required</div>
+          </div>
+        </div>
+        <button class="btn btn-primary"  type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <app-sideicons></app-sideicons>

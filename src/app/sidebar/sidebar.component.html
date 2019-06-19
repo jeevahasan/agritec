@@ -1,0 +1,62 @@
+<div class="container-fluid">
+    <div class="blogs-section pt-5">
+      <!--  -->
+      <div class="bar-btn-icons">
+        <div *ngIf="isLoggedIn" (click)="home()" class="baricon shadow bg-success d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-black" title="Add new articles">Home</p>
+        </div>
+        
+
+        <!-- <div *ngIf="isLoggedIn" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+            <div *ngFor="let blog of articles | filter : searchBlogs">
+          <span *ngIf="blog.data.uid == auth.currentUserId"><a href="/edit/{{blog.key}}">Edit</a></span>               
+        </div> -->
+        <div *ngIf="isLoggedIn" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+            <div *ngFor="let blog of articles | filter : searchBlogs">
+          <p class="d-inline-block h5 text-white" *ngIf="blog.data.uid == auth.currentUserId"><a routerLink="/article/{{blog.key}}">Profile</a></p> 
+        </div>
+        </div>
+        <div *ngIf="isLoggedIn" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+            <div *ngFor="let blog of articles | filter : searchBlogs">
+                <p class="edit-link h5 text-white" *ngIf="blog.data.uid == auth.currentUserId"><a href="/edit/{{blog.key}}">Edit profile</a></p>
+              </div>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="users()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Users</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="farmerpage()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Farmerpage</p>
+        </div>
+        <div *ngIf="isLoggedIn" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Middlemen</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="bank()" class="baricon shadow bg-white d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h7 text-black" title="Add new articles">Bank&Insu</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="agservice()" class="baricon shadow bg-white d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h7 text-black" title="Add new articles">AgService</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="agshops()" class="baricon shadow bg-white d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h7 text-black" title="Add new articles">AgShops</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="information()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Information</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="discuss()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Discuss</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="ads()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Ads</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="feedback()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h5 text-white" title="Add new articles">Feedback</p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="weather()" class="baricon shadow bg-dark d-flex justify-content-center align-items-center mb-2">
+            <p class="d-inline-block h5 text-white" title="Add new articles">Weather</p>
+          </div>
+
+      </div>
+      <!--  -->
+      </div>
+      </div>
+   

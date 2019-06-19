@@ -1,0 +1,32 @@
+<div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+        <div class="haran"><h2>Farmerspage</h2></div>
+      <h3 class="text-white pos-abs">Edit your post</h3>
+    </div>
+  </div>
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Place your image</label>
+          <input class="form-control-file" formControlName="postimage" name="postimage" (change)="upload($event)" accept=".png,.jpg" [ngClass]="{ 'is-invalid': submitted && f.postimage.errors }" type="file" />
+          <progress max="100" [value]="(uploadProgress | async)"></progress>
+          <div [ngClass]="{'text-success': fileUploaded, 'text-info': !fileUploaded}">{{upldStatus}}</div>
+          <img [src]="article.postimage" class="post-img" />
+          <div *ngIf="submitted && f.postimage.errors" class="invalid-feedback">
+            <div *ngIf="f.postimage.errors.required">Item image is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>About the need</label>
+          <textarea style="min-height:250px;" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="form-control" name="description"></textarea>
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description is required</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" [disabled]="!(editForm.valid)" type="submit">Save</button>
+        <button class="btn btn-danger ml-3" (click)="deletePost()" type="button">Delete</button>      </form>
+    </div>
+  </div>
+  

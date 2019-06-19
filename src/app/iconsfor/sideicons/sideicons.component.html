@@ -1,0 +1,22 @@
+<div class="blog-btn-icons">
+    <div (click)="goHome()" class="icon mt-2 shadow bg-primary d-flex justify-content-center align-items-center mb-2">
+      <p class="d-inline-block h3" title="Home">
+        <img src="assets/img/home.png" />
+      </p>
+    </div>
+    <div *ngIf="!auth.isUserLoggedIn" (click)="goAuth()" class="icon shadow bg-success d-flex justify-content-center align-items-center mb-2">
+        <p class="d-inline-block h3" title="Login">
+          <img src="assets/img/login-icon.png" />
+        </p>
+      </div>
+      <div *ngIf="auth.isUserLoggedIn" (click)="logout()" class="icon shadow bg-danger d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h3" title="Logout">
+            <img src="assets/img/logout-icon.png" />
+          </p>
+        </div>
+        <div *ngIf="!auth.isUserLoggedIn" (click)="goSignup()" class="icon shadow bg-info d-flex justify-content-center align-items-center mb-2">
+            <p class="d-inline-block h3" title="Signup">
+              <img src="assets/img/signup.png" />
+            </p>
+          </div>
+  </div>

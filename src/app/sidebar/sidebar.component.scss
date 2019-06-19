@@ -1,0 +1,28 @@
+
+// 
+.blogs-section {
+
+    .bar-btn-icons {
+      position: fixed;
+      top: 50px;
+      left: 0px;
+      z-index: 9;
+  
+      .baricon {
+        width: 115px;
+        height: 40px;
+        border-radius: 0%;
+        cursor: pointer;
+  
+        &:hover {
+          box-shadow: 0 3rem 3rem rgba(0, 0, 0, .175) !important;
+        }
+  
+        // img {
+        //   object-fit: contain;
+        //   width: 25px;
+        //   height: 25px;
+        // }
+      }
+    }
+  }

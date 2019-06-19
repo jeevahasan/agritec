@@ -1,0 +1,63 @@
+<div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+      <h3 class="text-white pos-abs">Edit Bank & Insurance</h3>
+    </div>
+  </div>
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Put your item image here</label>
+          <input class="form-control-file" formControlName="postimage" name="postimage" (change)="upload($event)" accept=".png,.jpg" [ngClass]="{ 'is-invalid': submitted && f.postimage.errors }" type="file" />
+          <progress max="100" [value]="(uploadProgress | async)"></progress>
+          <div [ngClass]="{'text-success': fileUploaded, 'text-info': !fileUploaded}">{{upldStatus}}</div>
+          <img [src]="article.postimage" class="post-img" />
+          
+   <!--change for validation-->       
+          <!-- <div *ngIf="submitted && f.postimage.errors" class="invalid-feedback">
+            <div *ngIf="f.postimage.errors.required">Item image is required</div>
+          </div> -->
+        </div>
+
+        <div class="form-group">
+          <label>Offers</label>
+          <input class="form-control" formControlName="Offers" name="Offers" [ngClass]="{ 'is-invalid': submitted && f.Offers.errors }" placeholder="Enter the item offers" />
+   <!--change for validation-->       
+          <!-- <div *ngIf="submitted && f.Offers.errors" class="invalid-feedback">
+            <div *ngIf="f.Offers.errors.required">Offers is required</div>
+          </div> -->
+        </div>
+
+
+        <!--change-->
+        <div class="form-group">
+          <label>Services :</label>
+            <select class="form-control" formControlName="Services" name="Services">
+          <!-- <option selected>Service Type</option> -->
+          <option>Loan</option>
+          <option>Finance</option>
+          <option>Insurance</option>
+          <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>About the item</label>
+          <textarea style="min-height:250px;" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="form-control" name="description" required></textarea>
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Description is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input class="form-control" formControlName="Location" name="Location" [ngClass]="{ 'is-invalid': submitted && f.Location.errors }" placeholder="Enter the Location" required/>
+          <div *ngIf="submitted && f.Location.errors" class="invalid-feedback">
+            <div *ngIf="f.Location.errors.required">Location is required</div>
+          </div>
+        </div>
+        <button class="btn btn-primary"  type="submit">Save</button>
+        <button class="btn btn-danger ml-3" (click)="deletePost()" type="button">Delete</button>      </form>
+    </div>
+  </div>
+  

@@ -1,0 +1,66 @@
+.form-banner {
+  height: 120px;
+
+  // h3 {
+  //   left: 270px;
+  //   top: 40px;
+  // }
+}
+.cssform{
+  background: -webkit-linear-gradient(left, #84b188, #0b9c9c);
+
+}
+
+
+.blog-btn-icons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9;
+
+  .icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+    }
+
+    img {
+      object-fit: contain;
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+.register-left img {
+  margin-top: 18%;
+  margin-bottom: 5%;
+  width: 25%;
+  -webkit-animation: mover 2s infinite alternate;
+  animation: mover 1s infinite alternate;
+}
+
+@-webkit-keyframes mover {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-20px);
+  }
+}
+
+@keyframes mover {
+  0% {
+      transform: translateY(0);
+  }
+  100% {
+      transform: translateY(-40px);
+  }
+}
+
+agm-map{
+  height:400px;
+}

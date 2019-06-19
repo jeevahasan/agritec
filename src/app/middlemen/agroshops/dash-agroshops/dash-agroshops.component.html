@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="blogs-section pt-5">
+        <app-sidebar></app-sidebar>
+        <div class="haran"><h2>Agroshops</h2></div>
+      <div class="blog-btn-icons">
+        <div *ngIf="!isLoggedIn" (click)="goSignup()" class="icon shadow bg-info d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h3" title="Login">
+            <img src="assets/img/signup.png" />
+          </p>
+        </div>
+        <div *ngIf="!isLoggedIn" (click)="goAuth()" class="icon shadow bg-success d-flex justify-content-center align-items-center mb-2">
+            <p class="d-inline-block h3" title="signup">
+              <img src="assets/img/login-icon.png" />
+            </p>
+        </div>
+        <div *ngIf="isLoggedIn" (click)="logout()" class="icon shadow bg-danger d-flex justify-content-center align-items-center mb-2">
+          <p class="d-inline-block h3" title="Logout">
+            <img src="assets/img/logout-icon.png" />
+          </p>
+        </div>
+        <div (click)="goAddArticles()" class="icon shadow bg-primary d-flex justify-content-center align-items-center">
+          <p class="d-inline-block h3 text-white" title="Add new articles">+</p>
+        </div>
+      </div>
+
+      
+      <div class="blog-list mb-5 mt-5">
+        <div class="container card-row" *ngIf="articles">
+          <div class="card blog shadow-sm m-2"  *ngFor="let blog of articles | filter : searchBlogs">
+
+              <div><h5 class="card-title"><a class="card-link" href="/showagroshops/{{blog.value.key}}">{{ blog.value.data.fullname }}</a></h5>
+              <span class="edit-link pos-abs py-1 px-2" *ngIf="blog.value.data.uid == auth.currentUserId"><a href="/editagroshops/{{blog.value.key}}">Edit</a></span></div>
+            <img class="card-img-top" [src]="blog.value.data.postimage" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title"><a class="card-link" href="/showagroshops/{{blog.value.key}}">{{ blog.value.data.Item_name }}</a></h5>
+              <blockquote class="blockquote mb-0">
+                <p class="card-text">{{blog.value.data.description | slice:0:150 }}...</p>
+                 <!-- <footer class="blockquote-footer">by <cite title="Source Title">{{blog.value.user.fullname}}</cite></footer>  -->
+              </blockquote>
+              <div class="text-right">
+                <a href="/showagroshops/{{blog.value.key}}" class="btn btn-light text-info read-more">Read more</a>
+  
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

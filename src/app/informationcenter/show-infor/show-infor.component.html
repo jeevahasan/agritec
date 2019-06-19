@@ -1,0 +1,92 @@
+<div class="container bgcss">
+  <section class="article-section">
+      <div class="haran"><h2>Informationcenter</h2></div>
+      <app-sidebar></app-sidebar>
+    <div class="cover-image">
+      <img [src]="article.postimage" class="w-100" />
+    </div>
+    <div class="d-flex post-meta">
+      <img [src]="article.user.profileimage" class="user-avatar" />
+      <footer class="blockquote-footer align-self-center">by <cite title="Source Title"><b>{{article.user.fullname}}</b></cite>
+        on
+        {{article.date | date}}</footer>
+    </div>
+    
+
+    <div class="post-content mt-2">
+        <div class="row">
+            <div class="col-md-6">
+                <label>Title</label>
+            </div>
+            <div class="col-md-6">
+                <p>{{ article.title }}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label>Description</label>
+            </div>
+            <div class="col-md-6">
+                <p>{{ article.description }}</p>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            {{like.length}}
+          </div>
+        </div>
+      <div class="row">
+      <form class="col-md-1" [formGroup]="likeForm" (ngSubmit)="onLike()">
+      <button type="submit" formControlName="Likes" class="btn btn-primary">Like</button>
+      </form>
+      </div>
+    </div>
+    <div class="mt-5 comments-section">
+      <h5>Comments</h5>
+      <div class="list-group">
+        <div class="list-group-item no-border" *ngFor="let comment of article.comments">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">{{ comment.user.fullname }}</h5>
+            <small>{{ comment.date | date }} </small>
+          </div>
+          <p class="mb-1">{{ comment.comment }}</p>
+        </div>
+      </div>
+      <div class="comments-form">
+        <form class="mt-4" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <textarea class="form-control" formControlName="comments" [ngClass]="{ 'is-invalid': submitted && f.comments.errors }"
+              name="comments" id="txtComments" placeholder="Your comments"></textarea>
+            <div *ngIf="submitted && f.comments.errors" class="invalid-feedback">
+              <div *ngIf="f.comments.errors.required">Comments is required</div>
+            </div>
+          </div>
+          <div *ngIf="!auth.isUserLoggedIn" class="text-warning text-muted"><a href="/auth">Login</a> to enter
+            comments.</div>
+          <button type="submit" [disabled]="!auth.isUserLoggedIn" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+      </div>
+    </div>
+  </section>
+</div>
+<div class="blog-btn-icons">
+  <div *ngIf="!auth.isUserLoggedIn" (click)="goAuth()" class="icon shadow bg-success d-flex justify-content-center align-items-center mb-2">
+    <p class="d-inline-block h3" title="Login">
+      <img src="assets/img/login-icon.png" />
+    </p>
+  </div>
+  <div *ngIf="auth.isUserLoggedIn" (click)="logout()" class="icon shadow bg-danger d-flex justify-content-center align-items-center mb-2">
+    <p class="d-inline-block h3" title="Logout">
+      <img src="assets/img/logout-icon.png" />
+    </p>
+  </div>
+  <div (click)="goAddArticles()" class="icon shadow bg-primary d-flex justify-content-center align-items-center">
+    <p class="d-inline-block h3 text-white" title="Add new articles">+</p>
+  </div>
+  <div (click)="goHome()" class="icon mt-2 shadow bg-primary d-flex justify-content-center align-items-center">
+    <p class="d-inline-block h3" title="Home">
+      <img src="assets/img/home.png" />
+    </p>
+  </div>
+</div>

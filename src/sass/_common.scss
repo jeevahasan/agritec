@@ -1,0 +1,20 @@
+html,
+body,
+.app-section {
+  height: 100%;
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pos-rel {
+  position: relative;
+}
+
+.pos-abs {
+  position: absolute;
+}

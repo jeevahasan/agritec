@@ -1,0 +1,22 @@
+<div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+        <div class="haran"><h2>Discussionforum</h2></div>
+      <h3 class="text-white pos-abs">Create a new Discussionforum</h3>
+    </div>
+  </div>
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>Ask a question</label>
+          <textarea style="min-height:250px;" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" class="form-control" name="description" required></textarea>
+          <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+            <div *ngIf="f.description.errors.required">Question is required</div>
+          </div>
+        </div>
+        <button class="btn btn-primary"  type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <app-sideicons></app-sideicons>

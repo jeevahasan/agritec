@@ -1,0 +1,100 @@
+<app-sidebar></app-sidebar>
+
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+<div>
+ 
+  <!-- <span>City : </span>
+  <select name="districts">
+      <option value="Jaffna">Jaffna</option>
+      <option value="Colombo">Colombo</option>
+      <option value="Nuwara-Eliya">Nuwara-Eliya</option>
+      <option value="Kandy">Kandy</option>
+      <option value="Ampara">Ampara</option>
+      <option value="Galle">Galle</option>
+      <option value="Anuradhapura">Anuradhapura</option>
+      <option value="Badulla">Badulla</option>
+      <option value="Batticaloa">Batticaloa</option>
+      <option value="Gampaha">Gampaha</option>
+      <option value="Hambantota">Hambantota</option>
+      <option value="Kalutara">Kalutara</option>
+      <option value="Kegalle">Kegalle</option>
+      <option value="Kilinochchi">Kilinochchi</option>
+      <option value="Kurunegala">Kurunegala</option>
+      <option value="Mannar">Mannar</option>
+      <option value="Matale">Matale</option>
+      <option value="Matara">Matara</option>
+      <option value="Monaragala">Monaragala</option>
+      <option value="Mullaitivu">Mullaitivu</option>
+      <option value="Polonnaruwa">Polonnaruwa</option>
+      <option value="Puttalam">Puttalam</option>
+      <option value="Ratnapura">Ratnapura</option>
+      <option value="Trincomalee">Trincomalee</option>
+      <option value="Vavuniya">Vavuniya</option>
+      
+    </select> -->
+    
+
+<p class="hd1"> Weather Information </p>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="select"><b>City :</b></label>
+        <select id="select" class="form-control" formControlName="city">
+      <option value="Jaffna">Jaffna</option>
+      <option value="Colombo" selected>Colombo</option>
+      <option value="Nuwara-Eliya">Nuwara-Eliya</option> 
+      <option value="Kandy">Kandy</option>
+      <option value="Ampara">Ampara</option>
+      <option value="Galle">Galle</option>
+      <option value="Anuradhapura">Anuradhapura</option>
+      <option value="Badulla">Badulla</option>
+      <option value="Batticaloa">Batticaloa</option>
+      <option value="Gampaha">Gampaha</option>
+      <option value="Hambantota">Hambantota</option>
+      <option value="Kalutara">Kalutara</option>
+      <option value="Kegalle">Kegalle</option>
+      <option value="Kilinochchi">Kilinochchi</option>
+      <option value="Kurunegala">Kurunegala</option>
+      <option value="Mannar">Mannar</option>
+      <option value="Matale">Matale</option>
+      <option value="Matara">Matara</option>
+      <option value="Monaragala">Monaragala</option>
+      <option value="Mullaitivu">Mullaitivu</option>
+      <option value="Polonnaruwa">Polonnaruwa</option>
+      <option value="Puttalam">Puttalam</option>
+      <option value="Ratnapura">Ratnapura</option>
+      <option value="Trincomalee">Trincomalee</option>
+      <option value="Vavuniya">Vavuniya</option>
+        </select>
+    </div>
+
+    <br> <br>
+    <div class="form-group">
+  <button type="submit" value="Submit" class="btn">Submit</button>
+  </div>
+  </form>
+
+  <img src="/assets/logo/agro.png">
+
+  <br/><br/>
+  <span>Tempareture : </span>
+  <span>{{temp}} ºC</span><br/><br/>
+
+  <span>Humidity : </span>
+  <span>{{weather.list[0].main.humidity}} %</span><br/><br/>
+
+  <span>Max Tempareture : </span>
+  <span>{{maxtemp}} ºC</span><br/><br/>
+
+  <span>Min Tempareture : </span>
+  <span>{{mintemp}} ºC</span><br/><br/>
+
+  <span>Sky : </span>
+  <span>{{weather.list[0].weather[0].description}}</span><br/><br/>
+
+  <span>Wind-Speed : </span>
+  <span>{{weather.list[0].wind.speed}} km/h</span><br/><br/>
+</div>
+</div>
+</div>
+<app-sideicons></app-sideicons>

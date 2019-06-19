@@ -1,0 +1,117 @@
+<div class="container">
+    <section class="article-section mb-5">
+        <app-sidebar></app-sidebar>
+        <div class="haran"><h2>Agroshops</h2></div>
+      <div class="postimage-image">
+        <img [src]="article.postimage" class="w-100" />
+      </div>
+      <div class="d-flex post-meta">
+        <img [src]="article.user.profileimage" class="user-avatar" />
+        <footer class="blockquote-footer align-self-center">by <cite title="Source Title"><b>{{article.user.fullname}}</b></cite>
+          on
+          {{article.date | date}}</footer>
+      </div>
+      <div class="post-content mt-2">
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Item name</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.Item_name }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Offers</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.Offers }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Price</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.Price }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Services</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.Services }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Description</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.description }}</p>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-6">
+                  <label>Location</label>
+              </div>
+              <div class="col-md-6">
+                  <p>{{ article.location }}</p>
+              </div>
+          </div>
+        <!-- <h1>{{ article.Item_name }}</h1>
+        <p>
+          {{ article.description }}
+        </p>
+        {{ article.location }} -->
+      </div>
+      <div class="mt-5 comments-section">
+        <h5>Comments</h5>
+        <div class="list-group">
+          <div class="list-group-item no-border" *ngFor="let comment of article.comments">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1">{{ comment.user.fullname }}</h5>
+              <small>{{ comment.date | date }} </small>
+            </div>
+            <p class="mb-1">{{ comment.comment }}</p>
+          </div>
+        </div>
+        <div class="comments-form">
+          <form class="mt-4" [formGroup]="commentForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <textarea class="form-control" formControlName="comments" [ngClass]="{ 'is-invalid': submitted && f.comments.errors }"
+                name="comments" id="txtComments" placeholder="Your comments"></textarea>
+              <div *ngIf="submitted && f.comments.errors" class="invalid-feedback">
+                <div *ngIf="f.comments.errors.required">Comments is required</div>
+              </div>
+            </div>
+            <div *ngIf="!auth.isUserLoggedIn" class="text-warning text-muted"><a href="/auth">Login</a> to enter
+              comments.</div>
+            <button type="submit" [disabled]="!auth.isUserLoggedIn" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="blog-btn-icons">
+    <div *ngIf="!auth.isUserLoggedIn" (click)="goAuth()" class="icon shadow bg-success d-flex justify-content-center align-items-center mb-2">
+      <p class="d-inline-block h3" title="Login">
+        <img src="assets/img/login-icon.png" />
+      </p>
+    </div>
+    <div *ngIf="auth.isUserLoggedIn" (click)="logout()" class="icon shadow bg-danger d-flex justify-content-center align-items-center mb-2">
+      <p class="d-inline-block h3" title="Logout">
+        <img src="assets/img/logout-icon.png" />
+      </p>
+    </div>
+    <div (click)="goAddArticles()" class="icon shadow bg-primary d-flex justify-content-center align-items-center">
+      <p class="d-inline-block h3 text-white" title="Add new articles">+</p>
+    </div>
+    <div (click)="goHome()" class="icon mt-2 shadow bg-primary d-flex justify-content-center align-items-center">
+      <p class="d-inline-block h3" title="Home">
+        <img src="assets/img/home.png" />
+      </p>
+    </div>
+  </div>
+  

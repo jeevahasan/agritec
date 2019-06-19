@@ -1,0 +1,95 @@
+<!-- <div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+        <app-sidebar></app-sidebar>
+      <h3 class="text-white pos-abs">Edit your profile details</h3>
+    </div>
+  </div> -->
+  <div class="container mx-auto cssform">
+    <div class="form-section col-md-6">
+        <app-sidebar></app-sidebar>
+      <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <div>
+                  <div class="register-left">
+                      <img height="100" width='100' src="/assets/logo/agro.png" alt="" />
+                  </div>
+                  <h2 class="text-white">Edit your profile details</h2>
+              </div>
+         
+            </div>
+        <div class="form-group">
+          <label>Choose a profile image</label>
+          <input class="form-control-file" formControlName="profileimage" name="profileimage" (change)="upload($event)" accept=".png,.jpg" [ngClass]="{ 'is-invalid': submitted && f.profileimage.errors }" type="file" />
+          <progress max="100" [value]="(uploadProgress | async)"></progress>
+          <br>( png/jpg formats only )
+          <div [ngClass]="{'text-success': fileUploaded, 'text-info': !fileUploaded}">{{upldStatus}}</div>
+          <img [src]="article.profileimage" class="article-img" />
+          <div *ngIf="submitted && f.profileimage.errors" class="invalid-feedback">
+            <div *ngIf="f.profileimage.errors.required">Profile image is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fullname</label>
+          <input class="form-control" formControlName="fullname" name="fullname" [ngClass]="{ 'is-invalid': submitted && f.fullname.errors }" placeholder="Your fullname" />
+          <div *ngIf="submitted && f.fullname.errors" class="invalid-feedback">
+            <div *ngIf="f.fullname.errors.required">Fullname is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input class="form-control" formControlName="username" name="username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" placeholder="Enter your username" />
+          <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+            <div *ngIf="f.username.errors.required">Username is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Date of birth</label>
+          <input type="date" class="form-control" formControlName="dob" name="dob" [ngClass]="{ 'is-invalid': submitted && f.dob.errors }" placeholder="Enter your date of birth" />
+          <div *ngIf="submitted && f.dob.errors" class="invalid-feedback">
+            <div *ngIf="f.dob.errors.required">Date of birth is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+            <label>Address</label>
+            <input class="form-control" formControlName="address" name="address" [ngClass]="{ 'is-invalid': submitted && f.address.errors }" placeholder="Enter your address" />
+            <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+              <div *ngIf="f.address.errors.required">Address is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>About</label>
+            <input class="form-control" formControlName="about" name="about" [ngClass]="{ 'is-invalid': submitted && f.about.errors }" placeholder="Say about you" />
+            <div *ngIf="submitted && f.about.errors" class="invalid-feedback">
+              <div *ngIf="f.about.errors.required">About you is required</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="number" class="form-control" formControlName="phoneno" [ngClass]="{ 'is-invalid': submitted && f.phoneno.errors}" placeholder="Enter your phone number" />
+            <div *ngIf="submitted && f.phoneno.errors" class="invalid-feedback">
+                <div *ngIf="f.phoneno.errors.required">Phone number is required</div>
+            </div>
+        </div>
+        <!--  -->
+      <div class="form-group">
+        <label for="select">Main role:</label>
+          <select id="select" class="form-control" formControlName="role">
+            <option>Farmer</option>
+            <option>Middlemen</option>
+          </select>
+      </div>
+
+            <label>Select your location (Optional)</label>
+            <agm-map [zoom]="7"  [latitude]="map.lat" [longitude]="map.lon" (mapClick)="onChoseLocation($event)"  >
+
+                <agm-marker [latitude]='lat' [longitude]='lon'></agm-marker>
+              </agm-map>
+
+              <br><br>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </form>
+      <br>
+    </div>
+  </div>
+
+<app-sideicons></app-sideicons>

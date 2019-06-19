@@ -1,0 +1,67 @@
+<!-- <div class="container-fluid shadow-sm form-banner pos-rel bg-primary">
+    <div class="container">
+      <h3 class="text-white pos-abs">Give feedback & complaint</h3>
+    </div>
+  </div> -->
+  <app-sidebar></app-sidebar>
+
+  <div class="container mx-auto mt-3">
+    <div class="form-section col-md-6">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+              <div>
+                  <div class="register-left">
+                      <img height="100" width='100' src="/assets/logo/agro.png" alt="" />
+                  </div>
+                  <h2 class="text-black">Give feedback & complaint</h2>
+              </div>
+              </div>
+        <div class="form-group">
+          <label>Complaint</label>
+          <textarea style="min-height:250px;" formControlName="Complaint" name="Complaint" [ngClass]="{ 'is-invalid': submitted && f.Complaint.errors }" class="form-control"></textarea>
+          <div *ngIf="submitted && f.Complaint.errors" class="invalid-feedback">
+            <div *ngIf="f.Complaint.errors.required">Complaint is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Feedbacks</label>
+          <textarea style="min-height:250px;" formControlName="Feedback" [ngClass]="{ 'is-invalid': submitted && f.Feedback.errors }" class="form-control" name="Feedback"></textarea>
+          <div *ngIf="submitted && f.Feedback.errors" class="invalid-feedback">
+            <div *ngIf="f.Feedback.errors.required">Feedback is required</div>
+          </div>
+        </div>
+        <!-- <div class="form-group">
+          <label>Rating</label>
+          <input class="form-control" formControlName="Rating" name="Rating" [ngClass]="{ 'is-invalid': submitted && f.Rating.errors }" placeholder="Enter the Rating" />
+          <div *ngIf="submitted && f.Rating.errors" class="invalid-feedback">
+            <div *ngIf="f.Rating.errors.required">Rating is required</div>
+          </div>
+        </div> -->
+     <!-- <app-list></app-list> -->
+     <div>
+        <div class='container'>
+          <div class="panel panel-primary">
+            <div class="table-responsive">
+              <table class="table">
+                <tbody>
+                  <tr *ngFor="let item of items">
+                    <td>
+                      <app-rating [rating]='item.rating' [itemId]='item.id' (ratingClick)='ratingComponentClick($event)'></app-rating>
+                    </td>
+                    <td>
+                      {{item.rating}} Stars
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+          <br><br>
+        <button class="btn btn-primary" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <app-sideicons></app-sideicons>

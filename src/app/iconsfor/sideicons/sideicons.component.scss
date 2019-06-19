@@ -1,0 +1,23 @@
+.blog-btn-icons {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9;
+  
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+  
+      &:hover {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+      }
+  
+      img {
+        object-fit: contain;
+        width: 25px;
+        height: 25px;
+      }
+    }
+  }
